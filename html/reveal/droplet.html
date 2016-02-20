@@ -44,12 +44,13 @@
 			<!-- Any section element inside of this container is displayed as a slide -->
 			<div class="slides" id="slides">
 				
+				<!-- INTRODUCTION -->
+
 				<section data-background="img/droplet.jpg">
 					<div class="fragment">
-						<h2 class="red">Molecular Dynamics Simulation to Analyze Nanodroplet Spreading</h2> 
-						<br>
-						<h4 class="red">Oliver Evans</h4>
-						<h5 class="red">2-12-16</h5>
+						<h2 class="sw">Molecular Dynamics Simulation to Analyze Nanodroplet Spreading</h2> 
+						<h4 class="sw">Oliver Evans</h4>
+						<h5 class="sw">2-20-16</h5>
 					</div>
 				</section>
 
@@ -67,14 +68,36 @@
 				</section>
 
 				<section>
-					<h2>Much of the wetting occurs on the molecular scale</h2>
-					<h3>Beyond the point where we can reasonably measure</h3>
+					<h1>And then they freeze</h1>
+					<h2 class="fragment">Which tends to be worse</h2>
+				</section>
+
+				<section data-background="img/ice.jpg" class="fragment">
+				</section>
+
+				<section data-background="img/ice2.jpg" class="fragment">
+				</section>
+
+				<section data-background="img/plane-ice.jpg" class="fragment">
+				</section>
+
+				<section>
+					<h3>So we want to know more about how things get wet</h3>
+				</section>
+
+				<section>
+					<h3>Much of the wetting occurs on the molecular scale</h2>
 					<br>
-					<br>
-					<h2 class="fragment">How can we study this kind of wetting?</h2>
-					<br>
+					<h4 class="fragment">Beyond the point where we can reasonably measure</h4>
+					<h4 class="fragment">Then how can we study this kind of wetting?</h4>
 					<br>
 					<h1 class="fragment">Math!</h1>
+					<h4 class="fragment">(and computers)</h4>
+				</section>
+
+				<!-- MOLECULAR DYNAMICS -->
+
+				<section data-background-video="movie/mesfin.mp4" type="video/mp4"/>
 				</section>
 
 				<section>
@@ -91,7 +114,7 @@
 						</div>
 					</div>
 
-					<div style="width:50%; float:right;">
+					<div style="width:50%; float:right; font-size:75%;">
 						<p class="fragment" data-fragment-index="3">$U_{ij}=4\varepsilon\Big[\big(\frac{\sigma}{r}\big)^{12}-\big(\frac{\sigma}{r}\big)^{6}\Big]$</p>
 						<p class="fragment" data-fragment-index="7">$U_{Tk}=\sum U_{ij}$</p>
 
@@ -104,8 +127,8 @@
 
 				<section data-background="img/big_data.png">
 				</section>
-				<section data-background-video="movie/mesfin.mp4" type="video/mp4"/>
-				</section>
+
+				<!-- VISUALIZATION -->
 
 				<section>
 					<h1>How can we make sense of all this?</h1>
@@ -115,30 +138,21 @@
 					<h2>1D Histograms</h2>
 					<img width="800" height="600" data-src="img/hist_1d.png">
 				</section>
-				<!--
 
 				<section data-background="img/hist_3d_no_rho.png" data-background-size="600px">
 				</section>
-
 				<section data-background="img/hist_colors.png" data-background-size="600px">
 				</section>
-
 				<section data-background="img/hist_polar_colors.png" data-background-size="600px">
 				</section>
 
-				<section data-background="img/hist_3d_polar.png" data-background-size="600px">
-				</section>
-
-				<section data-background="img/hist_3d_no_rho.png" data-background-size="600px">
-				</section>
-
-				<section data-background="img/hist_3d_with_rho.png" data-background-size="600px">
-				</section>
--->
-
 				<section>
-					<h2>Your histogram could be partitioned however you'd like</h2>
-					<h2 class="fragment">In my case:</h2>
+					<h2>Choosing Histogram Bins</h2>
+					<br>
+					<h2 class="fragment">We're interested in:</h2>
+					<h2 class=fragment style="color:green">$r$</h2>
+					<h2 class=fragment style="color:green">$z$</h2>
+					<h2 class=fragment style="color:red">$not\, \theta$</h2>
 				</section>
 
 				<section data-background="img/abin00228000.png" data-background-size="1000px">
@@ -152,128 +166,171 @@
 				</section>
 				<section data-background="img/wheelbin/wheelbin_cart_red.svg" data-background-size="800px">
 				</section>
-<!--
-				<section>
-					<div style="position:relative; width:100%; height:100%;">
-						<div class="bin grid">
-							<img src="img/wheelbin/wheelbin_grid.svg" class="fragment over bin"/>
-							<img src="img/wheelbin/wheelbin_grid_red.svg" class="fragment over bin"/>
-						</div>
-						<div class="bin rad">
-							<img src="img/wheelbin/wheelbin_r.svg" class="fragment bin"/>
-						</div>
-						<div class="over bin cart">
-							<img src="img/wheelbin/wheelbin_cart_red.svg" class="fragment over bin"/>
-							<img src="img/wheelbin/wheelbin_cart.svg" class="fragment over bin"/>
-						</div>
-					</div>
-				</section>
--->
 				
 				<section data-background="img/tanh.png" data-background-size="1000px">
 				</section>
 
+
+				<!-- CALCULATORS & FITTING -->
 				<section>
 					<div id="calculator_tanh"></div>
-					<script >
-						var elt = document.getElementById('calculator_tanh');
-						var options = { 
-							border: true, 
-							expressionsCollapsed: true, 
-							keypad: false,
-							zoomButtons: false,
-							settingsMenu: false
-						};
-
-						var calculator = Desmos.Calculator(elt, options);
-						
-						//Points for table to "fit" tanh to on the fly
-						var xvals=['-0.635','-0.584','-0.478','-0.432','-0.276','-0.199','-0.104','-0.000','0.098','0.183','0.311','0.401','0.540','0.597'];
-						var yvals=['1.589','1.634','1.652','1.488','1.374','1.334','1.238','1.217','0.981','0.795','0.574','0.444','0.264','0.170'];
-
-
-						calculator.setMathBounds({
-						  left: -1,
-						  right: 1,
-						  bottom: 0,
-						  top: 2
-						});
-
-						calculator.setExpressions([
-						{id:'func', latex:'f(x)=\\frac{\\rho_l}{2}(1-\\tanh(4\\frac{x-x_0}{w}))',hidden:true},
-						{id:'rho_val', latex:'\\rho_l=1', sliderBounds:{min:.5, max:2}},
-						{id:'x0_val', latex:'x_0=0', sliderBounds:{min:-.5, max:.5}},
-						{id:'w_val', latex:'w=1', sliderBounds:{min:.5, max:1.5}},
-						{id:'point', latex:'(x_0,\\rho_l/2)',hidden:true,color: Desmos.Colors.GREEN},
-						{id: 'pts_table',
-							type: 'table',
-							columns: [
-							{latex: 'x', values: xvals},
-							{latex: 'y', values: yvals, color:Desmos.Colors.RED}
-							]}
-						]);
-					</script>
-
 					<!--
 					<p class="eq fragment">$f(x)=\frac{\rho_l}{2}\Big(1-\tanh\big(4\cdot\frac{x-x_0}{w}\big)\Big)$</p)>
 -->
 				</section>
-
 				<section data-background="img/abin00228000.png" data-background-size="1000px">
 				</section>
-
 				<section>
 					<div id="calculator_circle"></div>
-					<script >
-						var elt = document.getElementById('calculator_circle');
-						var options = { 
-							border: true, 
-							expressionsCollapsed: true, 
-							keypad: false,
-							zoomButtons: false,
-							settingsMenu: false
-						};
-
-						var calculator = Desmos.Calculator(elt, options);
-						
-						//Points for table to "fit" tanh to on the fly
-						var xvals=['1.283','1.315','1.320','1.287','1.267','1.287','1.246','1.234','1.222','1.196','1.164','1.167','1.147','1.076','1.083','1.034','0.972','0.953','0.935','0.867','0.827','0.795','0.746','0.717','0.666','0.605','0.575','0.521','0.474','0.410','0.362','0.314'];
-						var yvals=['0.197','0.254','0.304','0.341','0.396','0.448','0.486','0.530','0.604','0.643','0.671','0.718','0.748','0.800','0.851','0.866','0.907','0.965','0.983','1.023','1.019','1.086','1.094','1.141','1.154','1.158','1.193','1.153','1.168','1.186','1.169','1.220'
-];
-
-						calculator.setMathBounds({
-						  left: -0.5,
-						  right: 2,
-						  bottom: -0.5,
-						  top: 2
-						});
-
-						calculator.setExpressions([
-						{id:'circle_func', latex:'(x-x_0)^2+(y-y_0)^2=r^2',hidden:true},
-						{id:'x0', latex:'x_0=0.5', sliderBounds:{min:0, max:1.5}},
-						{id:'y0', latex:'y_0=0.5', sliderBounds:{min:0, max:1.5}},
-						{id:'point', latex:'(x_0,y_0)',hidden:true,color: Desmos.Colors.GREEN},
-						{id:'r', latex:'r=0.3', sliderBounds:{min:.1, max:1},hidden:true},
-						{id: 'pts_table',
-							type: 'table',
-							columns: [
-							{latex: 'x', values: xvals},
-							{latex: 'y', values: yvals,color: Desmos.Colors.RED}
-							]}
-						]);
-					</script>
 				</section>
 
 				<section data-background="img/circle_fig.png" data-background-size="1000px">
 				</section>
-
-				<section data-background-video="movie/final_hist.mp4" type="video/mp4"/>
+				<section data-background-video="movie/hist_40A.mp4" type="video/mp4"/>
 				</section>
+
+				<section data-background="img/boot.jpg">
+					<div>
+						<br>
+						<h1 class="sw">Awesome Free Software</h2>
+						<br>
+						<table>
+							<tr>
+								<th>
+									<h3 class="sw">C++</h3>
+								</th>
+								<th>
+									<h3 class="sw">Python</h3>
+								</th>
+							</tr>
+							<tr>
+								<th>
+									<h3 class="sw">CERN ROOT</h3>
+								</th>
+								<th>
+									<h3 class="sw">Desmos</h3>
+								</th>
+							</tr>
+							<tr>
+								<th>
+									<h3 class="sw">Linux</h3>
+								</th>
+								<th>
+									<h3 class="sw">LAMMPS</h3>
+								</th>
+							</tr>
+						</table>
+					</div>
+				</section>
+
+				<section data-background-video="movie/mesfin.mp4" type="video/mp4"/>
+					<h1 class="sw">Thank you!</h1>
+					<br>
+					<br>
+					<br>
+					<br>
+					<br>
+					<br>
+					<div>
+						<div style="width:50%;float:left;">
+							<p class="sw">Oliver Evans</p>
+							<p class="sw">oge1@zips.uakron.edu</p>
+						</div>
+						<div style="width:50%;float:right;">
+							<p class="sw">Dr. Mesfin Tsige</p>
+							<p class="sw">University of Akron</p>
+						</div>
+					</div>
+				</section>
+				
+
 
 		</div>
 
+		<!-- END OF SLIDES -->
+
 		<script src="lib/js/head.min.js"></script>
 		<script src="js/reveal.js"></script>
+
+		<!-- TANH CALCULATOR -->
+		<script >
+			var elt = document.getElementById('calculator_tanh');
+			var options = { 
+				border: true, 
+				expressionsCollapsed: true, 
+				keypad: false,
+				zoomButtons: false,
+				settingsMenu: false
+			};
+
+			var calculator = Desmos.Calculator(elt, options);
+			
+			//Points for table to "fit" tanh to on the fly
+			var xvals=['-0.635','-0.584','-0.478','-0.432','-0.276','-0.199','-0.104','-0.000','0.098','0.183','0.311','0.401','0.540','0.597'];
+			var yvals=['1.589','1.634','1.652','1.488','1.374','1.334','1.238','1.217','0.981','0.795','0.574','0.444','0.264','0.170'];
+
+
+			calculator.setMathBounds({
+			  left: -1,
+			  right: 1,
+			  bottom: 0,
+			  top: 2
+			});
+
+			calculator.setExpressions([
+			{id:'func', latex:'f(x)=\\frac{\\rho_l}{2}(1-\\tanh(4\\frac{x-x_0}{w}))',hidden:true},
+			{id:'rho_val', latex:'\\rho_l=1', sliderBounds:{min:.5, max:2}},
+			{id:'x0_val', latex:'x_0=0', sliderBounds:{min:-.5, max:.5}},
+			{id:'w_val', latex:'w=1', sliderBounds:{min:.5, max:1.5}},
+			{id:'point', latex:'(x_0,\\rho_l/2)',hidden:true,color: Desmos.Colors.GREEN},
+			{id: 'pts_table',
+				type: 'table',
+				columns: [
+				{latex: 'x', values: xvals},
+				{latex: 'y', values: yvals, color:Desmos.Colors.RED}
+				]}
+			]);
+		</script>
+		
+		<!-- CIRCLE CALCULATOR -->
+		<script >
+			var elt = document.getElementById('calculator_circle');
+			var options = { 
+				border: true, 
+				expressionsCollapsed: true, 
+				keypad: false,
+				zoomButtons: false,
+				settingsMenu: false
+			};
+
+			var calculator = Desmos.Calculator(elt, options);
+			
+			//Points for table to "fit" circle to on the fly
+			var xvals=['1.283','1.315','1.320','1.287','1.267','1.287','1.246','1.234','1.222','1.196','1.164','1.167','1.147','1.076','1.083','1.034','0.972','0.953','0.935','0.867','0.827','0.795','0.746','0.717','0.666','0.605','0.575','0.521','0.474','0.410','0.362','0.314'];
+			var yvals=['0.197','0.254','0.304','0.341','0.396','0.448','0.486','0.530','0.604','0.643','0.671','0.718','0.748','0.800','0.851','0.866','0.907','0.965','0.983','1.023','1.019','1.086','1.094','1.141','1.154','1.158','1.193','1.153','1.168','1.186','1.169','1.220'
+];
+
+			calculator.setMathBounds({
+			  left: -0.5,
+			  right: 2,
+			  bottom: -0.5,
+			  top: 2
+			});
+
+			calculator.setExpressions([
+			{id:'circle_func', latex:'(x-x_0)^2+(y-y_0)^2=r^2',hidden:true},
+			{id:'x0', latex:'x_0=0.5', sliderBounds:{min:0, max:1.5}},
+			{id:'y0', latex:'y_0=0.5', sliderBounds:{min:0, max:1.5}},
+			{id:'point', latex:'(x_0,y_0)',hidden:true,color: Desmos.Colors.GREEN},
+			{id:'r', latex:'r=0.3', sliderBounds:{min:.1, max:1},hidden:true},
+			{id: 'pts_table',
+				type: 'table',
+				columns: [
+				{latex: 'x', values: xvals},
+				{latex: 'y', values: yvals,color: Desmos.Colors.RED}
+				]}
+			]);
+		</script>
 
 		<script>
 

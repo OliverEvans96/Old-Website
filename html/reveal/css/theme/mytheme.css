@@ -111,6 +111,15 @@ body,html {
 		1.25px 1.25px 0 #000;
 }
 
+.reveal .sw {
+	color: rgb(220,220,220);
+	text-shadow:
+		-1.5px -1.5px 0 #000,
+		1.5px -1.5px 0 #000,
+		-1.5px 1.5px 0 #000,
+		1.5px 1.5px 0 #000;
+}
+
 .reveal h2.red {
 	color: white;
 	text-shadow:
