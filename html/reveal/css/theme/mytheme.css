@@ -298,6 +298,50 @@ body,html {
 	box-shadow: none;
 }
 
+
+/*Images to be displayed on top of one another (overlayed)*/
+.reveal img.over {
+	position:absolute;
+	top:0;
+	left:0;
+}
+
+/*Container for such images*/
+.reveal div.over {
+	position:relative;
+	margin:0 auto;
+}
+
+/*MD explanation images & container*/
+.reveal div.md,
+.reveal img.md{
+	width:500px;
+	height:600px;
+}
+
+/*Bin explanation images & container*/
+.reveal div.bin,
+.reveal img.bin{
+	width:400px;
+	height:400px;
+}
+
+.reveal div.grid {
+	left=100;
+	top=100;
+}
+
+.reveal div.rad {
+	left=350;
+	top=450;
+}
+
+.reveal div.cart {
+	left=650;
+	top=100;
+}
+
+
 .reveal section img.plain {
   border: 0;
   box-shadow: none; }
