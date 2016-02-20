@@ -80,7 +80,15 @@ body,html {
  *********************************************/
 
 /* Desmos */
-#calculator {
+#calculator_circle {
+	width:100%;
+	height:100%;
+	top: 0px;
+	left:0px;
+	font-size: 14pt;
+	z-index: 5;
+}
+#calculator_tanh {
 	width:100%;
 	height:100%;
 	top: 0px;
