@@ -106,21 +106,28 @@
 						<div class="over md"> 
 							<img class="fragment over md"  data-src="img/potential/potential_1.png"  data-fragment-index="1"/>
 							<img class="fragment over md"  data-src="img/potential/potential_2.png"  data-fragment-index="2"/>
-							<img class="fragment over md"  data-src="img/potential/potential_3.png"  data-fragment-index="4"/>
-							<img class="fragment over md"  data-src="img/potential/potential_4.png"  data-fragment-index="5"/>
-							<img class="fragment over md"  data-src="img/potential/potential_5.png"  data-fragment-index="6"/>
-							<img class="fragment over md"  data-src="img/potential/potential_6.png"  data-fragment-index="7"/>
+							<img class="fragment over md"  data-src="img/potential/potential_3.png"  data-fragment-index="3"/>
+							<img class="fragment over md"  data-src="img/potential/potential_4.png"  data-fragment-index="4"/>
+							<img class="fragment over md"  data-src="img/potential/potential_5.png"  data-fragment-index="5"/>
+							<img class="fragment over md"  data-src="img/potential/potential_6.png"  data-fragment-index="10"/>
 
 						</div>
 					</div>
 
 					<div style="width:50%; float:right; font-size:75%;">
-						<p class="fragment" data-fragment-index="3">$U_{ij}=4\varepsilon\Big[\big(\frac{\sigma}{r}\big)^{12}-\big(\frac{\sigma}{r}\big)^{6}\Big]$</p>
-						<p class="fragment" data-fragment-index="7">$U_{Tk}=\sum U_{ij}$</p>
+						<div class="fragment" data-fragment-index="6">
+							<p>VDW: Lennard-Jones</p>
+							<p data-fragment-index="7">$u_{ij}=4\varepsilon\Big[\big(\frac{\sigma}{\vec{r_{ij}}}\big)^{12}-\big(\frac{\sigma}{\vec{r_{ij}}}\big)^{6}\Big]$</p>
+						</div>
+						<div class="fragment" data-fragment-index="8">
+							<p>Covalent Bond: Spring</p>
+							<p data-fragment-index="9">$u_{ij}=\frac{1}{2}\vec{r_{ij}^2}$</p>
+						</div>
+						<p class="fragment" data-fragment-index="10">$U_{i}=\sum u_{ij}$</p>
 
-						<p class="fragment">$\frac{\partial U}{\partial x}=-F_x$</p>
-						<p class="fragment">$x''(t)=\frac{F(t)}{m}$</p>
-						<p class="fragment">$x(t)=\frac{1}{2}x''(t_0)t^2+x'(t_0)t +x(t_0)$</p>
+						<p class="fragment" data-fragment-index="11">$\vec{F}=-\nabla\cdot U$</p>
+						<p class="fragment" data-fragment-index="12">$\vec{F}=\langle\frac{\partial U}{\partial x},\frac{\partial U}{\partial y},\frac{\partial U}{\partial z}\rangle$</p>
+
 					</div>
 					
 				</section>
@@ -167,6 +174,13 @@
 				<section data-background="img/wheelbin/wheelbin_cart_red.svg" data-background-size="800px">
 				</section>
 				
+				</section>
+				<section data-background="img/abin00228000.png" data-background-size="1000px">
+				</section>
+				<section data-background="img/hist_shadow.png" data-background-size="1000px">
+				</section>
+					<!-- SHADOW HERE -->
+
 				<section data-background="img/tanh.png" data-background-size="1000px">
 				</section>
 
@@ -186,6 +200,11 @@
 
 				<section data-background="img/circle_fig.png" data-background-size="1000px">
 				</section>
+
+				<section>
+					<h2>And then repeat for each timestep!</h2>
+				</section>
+
 				<section data-background-video="movie/hist_40A.mp4" type="video/mp4"/>
 				</section>
 
