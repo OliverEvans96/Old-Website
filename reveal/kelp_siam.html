@@ -1,0 +1,427 @@
+<!doctype html>
+<html lang="en">
+
+	<head>
+		<meta charset="utf-8">
+
+		<title>Oliver's Presentation</title>
+
+		<meta name="description" content="This is the description">
+		<meta name="author" content="Oliver Evans">
+
+		<meta name="apple-mobile-web-app-capable" content="yes">
+		<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
+
+		<link rel="stylesheet" href="css/reveal.css">
+		<link rel="stylesheet" href="css/theme/kelptheme.css" id="theme">
+
+		<!-- Code syntax highlighting -->
+		<link rel="stylesheet" href="lib/css/zenburn.css">
+
+		<!-- Desmos -->
+		<!--Demo key: <script src="https://www.desmos.com/api/v0.6/calculator.js?apiKey=dcb31709b452b1cf9dc26972add0fda6"></script>-->
+		<script src="https://www.desmos.com/api/v0.6/calculator.js?apiKey=5bbf1ef6d9b74086893c09979ed8703c"></script>
+
+		<!-- Printing and PDF exports -->
+		<script>
+			var link = document.createElement( 'link' );
+			link.rel = 'stylesheet';
+			link.type = 'text/css';
+			link.href = window.location.search.match( /print-pdf/gi ) ? 'css/print/pdf.css' : 'css/print/paper.css';
+			document.getElementsByTagName( 'head' )[0].appendChild( link );
+		</script>
+
+		<!--[if lt IE 9]>
+		<script src="lib/js/html5shiv.js"></script>
+		<![endif]-->
+	</head>
+
+	<body>
+
+		<div class="reveal">
+
+			<!-- Any section element inside of this container is displayed as a slide -->
+			<div class="slides" id="slides">
+				
+				<!-- INTRODUCTION -->
+
+				<section data-background="kelp_files/kelp_forest.jpg">
+					<div class="fragment">
+						<h2 class="sw">Modeling Self-Shading of Light in Kelp Farming Aquaculture Operations</h2> 
+						<h4 class="sw">Oliver Evans</h4>
+						<h4 class="sw">July 12, 2016</h4>
+						<br>
+						<h5 class="sw">University of Akron</h5>
+						<h5 class="sw">Clarkson University</h5>
+						<h5 class="sw">SINTEF Fisheries and Aquaculture</h5>
+						<h5 class="sw">MACROSEA</h5>
+						</div>
+				</section>
+
+				<!-- NORWAY PICTURES -->
+				<section data-background="kelp_files/norway.jpg">
+				</section>
+				<section data-background="kelp_files/map.png">
+				</section>
+
+				<!-- KELP FARMING-->
+				<section data-background="kelp_files/harvest.jpg">
+				</section>
+
+				<section>
+					<h1>Growing kelp is great!</h1>
+				</section>
+				<section data-background="kelp_files/kelp_food.jpg">
+				</section>
+				<section data-background="kelp_files/agar.jpg">
+				</section>
+				<section data-background="kelp_files/biofuel.jpg">
+				</section>
+				<section data-background="kelp_files/outfall.jpg">
+				</section>
+
+
+				<section>
+					<h3>How can we optimally farm kelp?</h3>
+					<br>
+					<h1 class="fragment">?</h1>
+					<br>
+					<h4 class="fragment">With a math model!</h4>
+				</section>
+
+				<!-- FLOWCHART -->
+				<section>
+					<h1>Model Flowchart</h1>
+					<img data-src="kelp_files/flowchart.png" width=100%>
+				</section>
+
+				<!-- KELP DESCRIPTION -->
+				<section data-background="kelp_files/innoculated.jpg">
+				</section>
+				<section data-background="kelp_files/harvest1.jpg">
+				</section>
+
+				<!-- KELP FROND -->
+				<section data-background="kelp_files/saccharina_diagram.jpg">
+				</section>
+				<section>
+					<h1>Assumption #1</h1>
+					<br>
+					<h3 class="fragment">Fronds are geometrically similar kites.</h3>
+				</section>
+				<section> 
+					<img data-src="kelp_files/kite.jpg" height=85% style="padding-left:5%;padding-right:5%">
+					<img data-src="kelp_files/frond.jpg" height=85% style="padding-left:5%;padding-right:5%">
+					<br>
+					<h3 class="fragment">Tip pointed at an angle $\theta_f$</h3>
+				</section>
+
+				<!-- MORE MODEL SETUP -->
+				<section>
+					<h1>Spatial setup</h1>
+				</section>
+				<section>
+					<img data-src="kelp_files/kelp_cartoon.jpg" height=100%>
+				</section>
+				<section>
+					<div>
+						<h1>Assumption #2</h1>
+						<h3>The rope is vertical and does not bend</h3>
+					</div>
+					<br>
+					<br>
+
+					<div class="fragment">
+					<h1>Assumption #3</h3>
+					<h3>Fronds are horizontal, flat, and only rotate in the $xy$ plane</h3>
+					</div>
+				</section>
+				<section>
+					<h1>Assumption #4</h1>
+					<h3>Fronds have a uniform vertical spacing (number density)</h3>
+				</section>
+
+				<!-- APPROACH -->
+				<section>
+					<h1>Primary interest</h1>
+					<h3 class="fragment">Change in length distribution over time</h3>
+					<h3 class="fragment">Ultimately, total harvestable biomass</h4>
+				</section>
+				<section>
+					<h1>Approach</h1>
+					<h3 class="fragment">Partition $z$ and $L$ into discrete bins</h4>
+					<img class="fragment" src="kelp_files/lz_dist.png">
+				</section>
+				
+				<section>
+					<h1>Assumption #5</h1>
+					<h4 class="fragment">Frond angles are randomly distributed according to a von Mises distribution centered at $\theta_w$, the direction of the water current, and sharpens as $v_w$, current speed increases</h4>
+				</section>
+				<section>
+					<h2>von Mises Distribution</h2>
+					<p class="fragment">$P_{\theta_f}(\theta_f) = \frac{e^{(v_w)\cos(\theta_f-v_w)}}{2\pi I_0(v_w)}$</p>
+					<img class="fragment" src="kelp_files/vonmises.png" height=65%>
+				</section>
+
+				<!-- FLOWCHART -->
+				<section>
+					<h1>Once again...</h1>
+					<img data-src="kelp_files/flowchart.png" width=100%>
+				</section>
+
+				<!-- Down the rabbit hole! -->
+				<section data-background="kelp_files/rabbit_hole.jpg">
+				</section>
+
+				<!-- Differential Equation -->
+				<section>
+					<h3>So how much does a particular frond grow?</h3>
+					<br>
+					<p class="fragment">$\frac{dL}{dt} = G(A,L,t)$</p>
+					<br>
+					<p class="fragment">$G$: growth function = ?</p>
+					<p class="fragment">$A$: light absored by frond</p>
+				</section>
+
+				<section>
+					<h3>Well, then how much light does it absorb?</h3>
+					<br>
+					<p class="fragment">$A = \iint_F I(\theta_p,r_p,z_p)\,d\theta_p dr_p$</p>
+					<br>
+					<p class="fragment">$I$: Light available at the point $(\theta_p,r_p,z_p)$</p>
+				</section>
+
+				<section>
+					<h3>And how much light is available?</h3>
+					<br>
+					<p class="fragment">$I = I_0(1-\beta)^{N_s}e^{-k_az_p}$</p>
+					<br>
+					<p class="fragment">$I_0$: Surface intensity (constant)</p>
+					<p class="fragment">$\beta$: absorbance of fronds (constant)</p>
+					<p class="fragment">$k_a$: attenuation coefficient (constant)</p>
+					<br>
+					<p class="fragment">$N_s$: Expected number of fronds shading a point</p>
+				</section>
+
+				<section>
+					<h3>Now, how many fronds shade the point?</h3>
+					
+					<h4 class="fragment">Good question. . .</h4>
+					<p class="fragment">$\displaystyle N_s = \sum_{k=0}^{k_p} P_s\left(\hat{\theta}_p(z_k-z_p),\hat{r}_p(z_k-z_p)\right)$</p>
+					<p class="fragment">(seems plausible, but probably not correct)</p>
+					<br>
+					<p class="fragment">$(\hat{\theta}_p,\hat{r}_p)$: projected point</p>
+					<p class="fragment">$P_s$: Probability of a point being shaded by a frond in the same plane</p>
+				</section>
+
+				<section>
+					<h3>Let's start with $P_s$</h3>
+					<p class="fragment" data-fragment-index=1>Condition for shading:<br>$(\theta_p,r_p) \in F(\theta_f,L)$</p>
+					<p class="fragment" data-fragment-index=2 style="margin-bottom:0px;">Equivalently:<br>$(\theta_f,L) \in R_s(\theta_p,r_p)$</p>
+					<img data-src="kelp_files/shade_area.png" height=60% class="fragment" data-fragment-index=2 style="margin-top:0px" />
+				</section>
+
+				<section>
+					<h3>2D Length-angle distribution</h3>
+					<p class="fragment">For a given depth bin $z_k$, we have independent probability distributions for the length and frond angle, $P_L$ and $P_{\theta_f}$</p>
+					<br>
+					<p class="fragment">For independent events $A$ and $B$,<br> $P(A \cap B) = P(A)P(B)$</p>
+					<p class="fragment">Then $P_{\theta_f}P_L$ is the probability of a frond having a particular length <i>and</i> angle</p>
+					<br>
+					<p class="fragment">So $P_s(\theta_p,r_p) = \iint_{R_s} P_{\theta_f}P_L \,d\theta_f dL$</p>
+				</section>
+				<section>
+					<p>$P_{\theta_f}(\theta_f)P_L(L)$ and $R_s(\theta_p,r_p)$</p>
+					<img data-src="kelp_files/cart_shade.png" height=100%/>
+				</section>
+
+				<section>
+					<h2 style="margin-bottom:0px;">Woohoo!</h2>
+					<img class="fragment" data-src="kelp_files/prob_shade.png" height=90% style="margin-top:0px;" />
+				</section>
+
+				<section>
+					<h3>Now, back to 3D!</h3>
+				</section>
+				<section data-background="kelp_files/projection_diagram.png">
+					<p>Project $(\theta_p,r_p)$ on to the $z_f$ plane</p>
+					<p class="fragment">$\displaystyle \quad N_s = \sum_{k=0}^{k_p} P_s\left(\hat{\theta}_p(z_k-z_p),\hat{r}_p(z_k-z_p)\right)$</p>
+				</section>
+
+				 <section data-background="kelp_files/light3d.png">
+					<h1 style="margin-bottom:0px;">3D Light Field</h1>
+				</section>
+
+				<section>
+					<h1>Recalculating the length distribution</h1>
+				</section>
+				<section data-transition="fade">
+					<img data-src="kelp_files/g_contourf.png" width=100%>
+				</section>
+				<section data-transition="fade">
+					<img data-src="kelp_files/g_RG.png" width=100%>
+				</section>
+				<section data-transition="fade">
+					<img data-src="kelp_files/g_P2D.png" width=100%>
+				</section>
+
+				<section data-markdown>
+					<script type="text/template">
+						## Upcoming work
+						- Ambient light <!-- .element: class="fragment" -->
+						- Rope bending <!-- .element: class="fragment" -->
+						- Frond bending <!-- .element: class="fragment" -->
+						- Fit parameters to data <!-- .element: class="fragment" -->
+						- Improved numerical methods <!-- .element: class="fragment" -->
+						- 3D interactive visualization over time! <!-- .element: class="fragment" -->
+					</script>
+				</section>
+
+				<section>
+					<h1>Last time!</h1>
+					<img data-src="kelp_files/flowchart.png" width=100%>
+				</section>
+
+				<section data-background="kelp_files/norway.jpg">
+					<h1 class="sw">Thank you!</h1>
+					<br>
+					<h4 class="sw">Oliver Evans</h4>
+					<h4 class="sw">oge1@zips.uakron.ed</h4>
+					<br>
+					<h5 class="sw">University of Akron</h5>
+					<h5 class="sw">Clarkson University</h5>
+					<h5 class="sw">SINTEF Fisheries and Aquaculture</h5>
+					<h5 class="sw">MACROSEA</h5>
+				</section>
+
+
+
+
+				
+				
+			</div>
+		</div>
+
+		<!-- END OF SLIDES -->
+
+		<script src="lib/js/head.min.js"></script>
+		<script src="js/reveal.js"></script>
+
+		<!-- TANH CALCULATOR -->
+		<script >
+			var elt = document.getElementById('calculator_tanh');
+			var options = { 
+				border: true, 
+				expressionsCollapsed: true, 
+				keypad: false,
+				zoomButtons: false,
+				settingsMenu: false
+			};
+
+			var calculator = Desmos.Calculator(elt, options);
+			
+			//Points for table to "fit" tanh to on the fly
+			var xvals=['-0.635','-0.584','-0.478','-0.432','-0.276','-0.199','-0.104','-0.000','0.098','0.183','0.311','0.401','0.540','0.597'];
+			var yvals=['1.589','1.634','1.652','1.488','1.374','1.334','1.238','1.217','0.981','0.795','0.574','0.444','0.264','0.170'];
+
+
+			calculator.setMathBounds({
+			  left: -1,
+			  right: 1,
+			  bottom: 0,
+			  top: 2
+			});
+
+			calculator.setExpressions([
+			{id:'func', latex:'f(x)=\\frac{\\rho_l}{2}(1-\\tanh(4\\frac{x-x_0}{w}))',hidden:true},
+			{id:'rho_val', latex:'\\rho_l=1', sliderBounds:{min:.5, max:2}},
+			{id:'x0_val', latex:'x_0=0', sliderBounds:{min:-.5, max:.5}},
+			{id:'w_val', latex:'w=1', sliderBounds:{min:.5, max:1.5}},
+			{id:'point', latex:'(x_0,\\rho_l/2)',hidden:true,color: Desmos.Colors.GREEN},
+			{id: 'pts_table',
+				type: 'table',
+				columns: [
+				{latex: 'x', values: xvals},
+				{latex: 'y', values: yvals, color:Desmos.Colors.RED}
+				]}
+			]);
+		</script>
+		
+		<!-- CIRCLE CALCULATOR -->
+		<script >
+			var elt = document.getElementById('calculator_circle');
+			var options = { 
+				border: true, 
+				expressionsCollapsed: true, 
+				keypad: false,
+				zoomButtons: false,
+				settingsMenu: false
+			};
+
+			var calculator = Desmos.Calculator(elt, options);
+			
+			//Points for table to "fit" circle to on the fly
+			var xvals=['1.283','1.315','1.320','1.287','1.267','1.287','1.246','1.234','1.222','1.196','1.164','1.167','1.147','1.076','1.083','1.034','0.972','0.953','0.935','0.867','0.827','0.795','0.746','0.717','0.666','0.605','0.575','0.521','0.474','0.410','0.362','0.314'];
+			var yvals=['0.197','0.254','0.304','0.341','0.396','0.448','0.486','0.530','0.604','0.643','0.671','0.718','0.748','0.800','0.851','0.866','0.907','0.965','0.983','1.023','1.019','1.086','1.094','1.141','1.154','1.158','1.193','1.153','1.168','1.186','1.169','1.220'
+];
+
+			calculator.setMathBounds({
+			  left: -0.5,
+			  right: 2,
+			  bottom: -0.5,
+			  top: 2
+			});
+
+			calculator.setExpressions([
+			{id:'circle_func', latex:'(x-x_0)^2+(y-y_0)^2=r^2',hidden:true},
+			{id:'x0', latex:'x_0=0.5', sliderBounds:{min:0, max:1.5}},
+			{id:'y0', latex:'y_0=0.5', sliderBounds:{min:0, max:1.5}},
+			{id:'point', latex:'(x_0,y_0)',hidden:true,color: Desmos.Colors.GREEN},
+			{id:'r', latex:'r=0.3', sliderBounds:{min:.1, max:1},hidden:true},
+			{id: 'pts_table',
+				type: 'table',
+				columns: [
+				{latex: 'x', values: xvals},
+				{latex: 'y', values: yvals,color: Desmos.Colors.RED}
+				]}
+			]);
+		</script>
+
+		<script>
+
+			// Full list of configuration options available at:
+			// https://github.com/hakimel/reveal.js#configuration
+			Reveal.initialize({
+				width: '100%',
+				height: '100%',
+				controls: false,
+				progress: true,
+				history: true,
+				center: true,
+
+				transition: 'slide', // none/fade/slide/convex/concave/zoom
+				transitionSpeed: 'default',
+
+				// Optional reveal.js plugins
+				math: {
+				mathjax: 'https://cdn.mathjax.org/mathjax/latest/MathJax.js',
+				config: 'TeX-AMS_HTML-full'  // See http://docs.mathjax.org/en/latest/config-files.html
+    },
+
+				dependencies: [
+					{ src: 'lib/js/classList.js', condition: function() { return !document.body.classList; } },
+					{ src: 'plugin/markdown/marked.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+					{ src: 'plugin/markdown/markdown.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+					{ src: 'plugin/math/math.js', async: true },
+					{ src: 'plugin/highlight/highlight.js', async: true, callback: function() { hljs.initHighlightingOnLoad(); } },
+					{ src: 'plugin/zoom-js/zoom.js', async: true },
+					{ src: 'plugin/notes/notes.js', async: true }
+				]
+			});
+
+		</script>
+
+	</body>
+</html>
