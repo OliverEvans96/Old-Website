@@ -379,18 +379,18 @@ body,html {
 }
 
 .reveal div.grid {
-	left=100;
-	top=100;
+	left:100;
+	top:100;
 }
 
 .reveal div.rad {
-	left=350;
-	top=450;
+	left:350;
+	top:450;
 }
 
 .reveal div.cart {
-	left=650;
-	top=100;
+	left:650;
+	top:100;
 }
 
 
