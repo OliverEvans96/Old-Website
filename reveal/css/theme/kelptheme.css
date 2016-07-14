@@ -46,9 +46,15 @@ body,html {
 
 .reveal {
   position:absolute;
-  left:0px;
   top:0px;
-  margin: 0px;
+  /* Center + Fixed width & height */
+  width:1024px;
+  height:768px;
+  left:50%;
+  margin-left: -512px;
+  margin-right: 0px;
+  margin-top: 0px;
+  margin-bottom: 0px;
   padding: 0px;
   font-family: "Source Sans Pro", Helvetica, sans-serif;
   font-size: 38px;
