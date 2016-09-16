@@ -1,0 +1,302 @@
+<doctype html>
+<html lang="en">
+
+	<head>
+		<meta charset="utf-8">
+
+		<title>Kelp UA 2016</title>
+
+		<meta name="description" content="This is the description">
+		<meta name="author" content="Oliver Evans">
+
+		<meta name="apple-mobile-web-app-capable" content="yes">
+		<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
+
+		<link rel="stylesheet" href="css/reveal.css">
+		<link rel="stylesheet" href="css/theme/kelptheme.css" id="theme">
+
+		<!-- Code syntax highlighting -->
+		<link rel="stylesheet" href="lib/css/zenburn.css">
+
+		<!-- Printing and PDF exports -->
+		<script>
+			var link = document.createElement( 'link' );
+			link.rel = 'stylesheet';
+			link.type = 'text/css';
+			link.href = window.location.search.match( /print-pdf/gi ) ? 'css/print/pdf.css' : 'css/print/paper.css';
+			document.getElementsByTagName( 'head' )[0].appendChild( link );
+		</script>
+
+		<!--[if lt IE 9]>
+		<script src="lib/js/html5shiv.js"></script>
+		<![endif]-->
+	</head>
+
+	<body>
+		<div class="reveal">
+
+			<!-- Any section element inside of this container is displayed as a slide -->
+			<div class="slides" id="slides">
+				
+				<!-- INTRODUCTION -->
+
+				<section data-background="kelp_files/kelp_forest.jpg">
+					<div>
+						<h2 class="sw">Modeling Self-Shading of Light in Kelp Farming Aquaculture Operations</h2> 
+						<!--
+						<h4 class="sw">Oliver Evans</h4>
+						<h4 class="sw">July 22, 2016</h4>
+						<br>
+-->
+						<p style="font-family:serif; font-size:25pt" class="sw"><br>Oliver Evans<sup>1</sup>, Shane Rogers<sup>2</sup>, Ole Jacob Broch<sup>3</sup>, and Aleksander Handå<sup>3</sup>
+						<br>
+						1 Department of Mathematics, University of Akron
+						<br>
+						2 Department of Environmental Engineering, Clarkson University
+						<br>
+						3 SINTEF Fisheries and Aquaculture, Trondheim, Norway
+						<br>
+						<br>
+						MACROSEA Project
+						</p>
+						</div>
+					<img data-src="kelp_files/nsf-logo.jpg" style="position:absolute;left:-30px;bottom:-30px;height:100px;" />
+					<img data-src="kelp_files/clarkson-logo.jpg" style="position:absolute;right:-30px;bottom:-30px;height:100px;" />
+						<!--
+						<h5 class="sw">University of Akron</h5>
+						<h5 class="sw">Clarkson University</h5>
+						<h5 class="sw">SINTEF Fisheries and Aquaculture</h5>
+						<h5 class="sw">MACROSEA</h5>
+-->
+				</section>
+
+				<!-- Big Picture -->
+				<section>
+					<h3>Can we use kelp for tertiary wastewater treatment?</h3>
+					<br>
+					<h4 class="fragment">Nutrient remediation</h4>
+					<h4 class="fragment">After mechanical and chemical treatment</h4>
+				</section>
+				<section data-background="kelp_files/outfall.jpg">
+				</section>
+				<section>
+					<h3>Harvested kelp can be used for bioenergy production!</h3>
+				</section>
+				<section data-background="kelp_files/biofuel.jpg">
+				</section>
+				<section data-background="kelp_files/kelp_food.jpg">
+				</section>
+				<section data-background="kelp_files/agar.jpg">
+				</section>
+
+				<!-- Simulation -->
+				<section>
+					<h3>Can we predict how wastewater effluent would affect kelp growth?</h3>
+					<br>
+					<h4 class="fragment">Yes - with math!</h4>
+					<h4 class="fragment">Simulations are much cheaper than trial and error</h4>
+				</section>
+
+				<section data-background-video="kelp_files/sinmod_phytoplankton.mp4" data-background-video-loop=true />
+					<h3>Sintef's SINMOD - Trondheim, Norway</h3>
+					<img data-src="kelp_files/sinmod_map.png" style="position:absolute;left:50px;bottom:10px;width:400px;" class="fragment"/>
+				</section>
+
+				<!-- Project Goals -->
+				<section data-background="kelp_files/light_water.jpg">
+				</section>
+				<section>
+					<h3>How is the availability of light affected by...</h3>
+					<br>
+					<h4 class="fragment">Water quality</h4>
+					<h4 class="fragment">Kelp spacing</h4>
+					<h4 class="fragment">Kelp depth</h4>
+					<h4 class="fragment">Water current</h4>
+				</section>
+
+				<!-- Kelp setup -->
+				<section>
+					<h3 style="margin-bottom:-10px">The setup</h3>
+					<img data-src="kelp_files/kelp_cartoon.jpg" height=100%>
+				</section>
+
+				<!-- Model overview-->
+				<section> 
+					<h3>Frond shape</h3>
+					<img data-src="kelp_files/kite.jpg" height=85% style="padding-left:5%;padding-right:5%">
+					<img data-src="kelp_files/frond.jpg" height=85% style="padding-left:5%;padding-right:5%">
+				</section>
+
+				<!-- Discretization -->
+				<section>
+					<h3>Partition $z$ and $L$ into discrete bins</h4>
+					<img data-src="kelp_files/lz_dist.png">
+				</section>
+
+				<!-- 2D Prob. Dist. -->
+				<section>
+					<h3>von Mises Distribution</h2>
+					<p >$P_{\theta_f}(\theta_f) = \frac{e^{(v_w)\cos(\theta_w-v_w)}}{2\pi I_0(v_w)}$</p>
+					<img  src="kelp_files/vonmises.png" height=65%>
+				</section>
+
+				<section>
+					<h3>2D frond length-angle distribution</h3>
+					<img data-src="kelp_files/prob_2d.png">
+				</section>
+				<section transition="fade">
+					<img height="80%" data-src="kelp_files/kelp_sample_1.png">
+					<p>$v_{w_{low}}, \theta_w = 2\pi/3$</p>
+				</section>
+				<section transition="fade">
+					<img height="80%" data-src="kelp_files/kelp_sample_2.png">
+					<p>$v_{w_{high}}, \theta_w = \pi/4$</p>
+				</section>
+				<section>
+					<h3>Probability of kelp (2D)</h3>
+					<img data-src="kelp_files/prob_shade.png" height=90% />
+				</section>
+
+				<!-- PDE -->
+				<section>
+					<h3> Volume Scattering Function: $\beta(\Delta \theta)$</h3>
+					<img data-src="kelp_files/petzold.png" height="90%"/>
+				</section>
+				<section>
+					<h3>Radiance PDE</h3>
+					<img data-src="kelp_files/pde_diagram_annotated.png" height=70%/>
+					<p style="font-size:20pt;" class="fragment">$\displaystyle \frac{\partial R(x,y,z,\theta,\phi)}{\partial r} = -c(x,y,z)R(x,y,z,\theta,\phi) + R^*(x,y,z,\theta,\phi)$</p>
+				</section>
+				<section>
+					<img data-src="kelp_files/pde_diagram_annotated.png" height=30%/>
+					<p style="font-size:20pt;" class="fragment">$\displaystyle \frac{\partial R}{\partial x} \sin\phi\cos\theta + \frac{\partial R}{\partial y} \sin\phi\sin\theta + \frac{\partial R}{\partial z} \cos\phi \\ \quad = -c(x,y,z)R(x,y,z,\theta,\phi) \\ \quad + \int_0^{2\pi} \int_0^\pi \beta(\theta,\phi;\theta',\phi')R(x,y,z,\theta',\phi')\,d\phi'd\theta'\\$</p>
+					<p style="font-size:20pt;" class="fragment">$c(x,y,z) = (1-P_k(x,y,z))a_w + b_w + P_k(x,y,z)a_k\\$</p>
+					<p style="font-size:20pt;" class="fragment">Solve numerically using iterative methods</h3>
+				</section>
+
+				<!-- Visualization -->
+				<section data-background="kelp_files/rotate.gif" >
+					<h1 style="margin-bottom:0px;">3D Light Field</h1>
+				</section>
+
+				<section>
+					<h3>Well, then how much energy does it absorb?</h3>
+					<br>
+					<p class="fragment">$E(x,y,z) = \iint_{2\pi} R(x,y,z,\theta,\phi)\,d\theta,d\phi$</p>
+					<p class="fragment">$\Phi = \iint_F E(x,y,z)$</p>
+					<br>
+					<p class="fragment">$E$: Irradiance</p>
+					<p class="fragment">$\Phi$: Radiant flux</p>
+				</section>
+
+				<!-- Differential Equation -->
+				<section>
+					<h3>So how much does a particular frond grow?</h3>
+					<br>
+					<p class="fragment">$\frac{dL}{dt} = G(A,L,t)$</p>
+					<br>
+					<p class="fragment">$G$: growth function = ?</p>
+					<p class="fragment">$A$: light absored by frond</p>
+				</section>
+
+				<section>
+					<h1>Recalculating the length distribution</h1>
+				</section>
+				<section data-transition="fade">
+					<img data-src="kelp_files/g_contourf1.png" width=100%>
+				</section>
+				<section data-transition="fade">
+					<img data-src="kelp_files/g_RG.png" width=100%>
+				</section>
+				<section data-transition="fade">
+					<img data-src="kelp_files/g_P2D.png" width=100%>
+				</section>
+
+
+				<!-- Future Work -->
+				<section data-markdown>
+					<script type="text/template">
+						## Upcoming work
+						- Solve PDE <!-- .element: class="fragment" -->
+						- Mie scattering theory for VSF <!-- .element: class="fragment" -->
+						- Rope bending <!-- .element: class="fragment" -->
+						- Frond bending <!-- .element: class="fragment" -->
+						- Fit parameters to data <!-- .element: class="fragment" -->
+						- 3D interactive visualization over time! <!-- .element: class="fragment" -->
+						- Long lines <!-- .element: class="fragment" -->
+						- Consider light wavelength <!-- .element: class="fragment" -->
+						- Optimize rope spacing, depth <!-- .element: class="fragment" -->
+					</script>
+				</section>
+
+				<!-- Thank you! -->
+				<section data-background="kelp_files/norway.jpg">
+					<h1 class="sw">Thank you!</h1>
+					<br>
+					<h4 class="sw">Oliver Evans</h4>
+					<h4 class="sw">oge1@zips.uakron.edu</h4>
+					<h5 class="sw">University of Akron</h5>
+					<br>
+					<h5 class="sw">Shane Rogers</h5>
+					<h5 class="sw">Clarkson University</h5>
+					<h5 class="sw">SINTEF Fisheries and Aquaculture</h5>
+					<h5 class="sw">MACROSEA</h5>
+				</section>
+			</div>
+		</div>
+
+		<!-- END OF SLIDES -->
+
+		<script src="lib/js/head.min.js"></script>
+		<script src="js/reveal.js"></script>
+
+		<script>
+
+			// Full list of configuration options available at:
+			// https://github.com/hakimel/reveal.js#configuration
+			Reveal.initialize({
+				width: '100%',
+				height: '100%',
+				controls: false,
+				progress: true,
+				history: true,
+				center: true,
+
+				transition: 'slide', // none/fade/slide/convex/concave/zoom
+				transitionSpeed: 'default',
+
+				// Optional reveal.js plugins
+				math: {
+				mathjax: 'https://cdn.mathjax.org/mathjax/latest/MathJax.js',
+				//mathjax: '../MathJax/MathJax.js',
+				config: 'TeX-AMS_HTML-full'  // See http://docs.mathjax.org/en/latest/config-files.html
+    },
+				
+				// Multiplexing
+				multiplex: {
+					// Example values. To generate your own, see the socket.io server instructions.
+					secret: '14703108381013658269', // Obtained from the socket.io server. Gives this (the master) control of the presentation
+					id: '3327bfccc2d3b3b3', // Obtained from socket.io server
+					url: 'https://reveal-js-multiplex-ccjbegmaii.now.sh' // Location of socket.io server
+				},
+
+				dependencies: [
+					{ src: 'lib/js/classList.js', condition: function() { return !document.body.classList; } },
+					{ src: 'plugin/markdown/marked.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+					{ src: 'plugin/markdown/markdown.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+					{ src: 'plugin/math/math.js', async: true },
+					{ src: 'plugin/highlight/highlight.js', async: true, callback: function() { hljs.initHighlightingOnLoad(); } },
+					{ src: 'plugin/zoom-js/zoom.js', async: true },
+					{ src: '//cdn.socket.io/socket.io-1.3.5.js', async: true },
+					//{ src: 'http://revealjs.jit.su/socket.io/socket.io.js', async: true }, 
+					{ src: 'plugin/multiplex/master.js', async: true },
+					{ src: 'plugin/notes/notes.js', async: true }
+				]
+			});
+
+		</script>
+
+	</body>
+</html>
