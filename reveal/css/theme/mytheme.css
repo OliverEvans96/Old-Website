@@ -41,6 +41,10 @@ body,html {
   height:95%;
   line-height: 1.3;
   font-weight: inherit; }
+ 
+.MathJax {
+  font-size: 0.5em !important;
+}
 
 /*********************************************
  * HEADERS
